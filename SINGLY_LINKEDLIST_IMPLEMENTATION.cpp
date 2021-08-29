@@ -41,6 +41,22 @@ void insertAtHead(Node *&head, int val)
     head = newNode;
 }
 
+int sizeOfLinkedList(Node *&head)
+{
+    if (head == NULL)
+        return 0;
+
+    Node *temp = head;
+
+    int ctr = 0;
+    while (temp != NULL)
+    {
+        ctr++;
+        temp = temp->next;
+    }
+
+    return ctr;
+}
 void display(Node *&head)
 {
     Node *temp = head;
@@ -71,7 +87,9 @@ int main()
     // <----- SINGLY LINKEDLIST IMPLEMENTATION ----->
 
     // TIME COMPLEXITY OF INSERTION :- O(N)
+    // TIME COMPLEXITY FOR SIZE     :- O(N)
 
     display(head);
-}
 
+    cout << (sizeOfLinkedList(head)) << endl;
+}
