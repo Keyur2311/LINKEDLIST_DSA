@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Node
 {
 public:
@@ -8,97 +7,101 @@ public:
     Node *next;
 };
 
-           // <-------- STACK FUNCTIONS ------>
-
-Node *top;
-int isEmpty()
+// <-------- STACK FUNCTIONS ------>
+class Stack
 {
-    return top == NULL;
-}
+public:
+    Node *top;
 
-void Pop()
-{
-    if (isEmpty())
+    Stack()
     {
-        cout << "STACK IS EMPTY" << endl;
-        exit(1);
-    }
-    Node *todelete = top;
-    top = top->next;
-
-    delete todelete;
-}
-void Push(int val)
-{
-    Node *temp = new Node();
-
-    if (!temp)
-    {
-        cout << "STACK OVERFLOW" << endl;
-        return;
+        top = NULL;
     }
 
-    temp->data = val;
-    temp->next = top;
-    top = temp;
-}
-
-int Top()
-{
-    if (isEmpty())
+    int isEmpty()
     {
-        cout << "STACK IS EMPTY" << endl;
-        exit(1);
+        return top == NULL;
     }
-    return top->data;
-}
 
-void printStack()
-{
-    if (top == NULL)
+    void Pop()
     {
-        cout << "STACK IS EMPTY" << endl;
-        return;
-    }
-    Node *temp = top;
-
-    while (temp != NULL)
-    {
-        cout << temp->data;
-        if (temp->next != NULL)
+        if (isEmpty())
         {
-            cout << "->";
+            cout << "STACK IS EMPTY" << endl;
+            exit(1);
         }
-        temp = temp->next;
+        Node *todelete = top;
+        top = top->next;
+
+        delete todelete;
     }
-    cout << endl;
-}
+    void Push(int val)
+    {
+        Node *temp = new Node();
+
+        if (!temp)
+        {
+            cout << "STACK OVERFLOW" << endl;
+            return;
+        }
+
+        temp->data = val;
+        temp->next = top;
+        top = temp;
+    }
+
+    int Top()
+    {
+        if (isEmpty())
+        {
+            cout << "STACK IS EMPTY" << endl;
+            exit(1);
+        }
+        return top->data;
+    }
+
+    void printStack()
+    {
+        if (top == NULL)
+        {
+            cout << "STACK IS EMPTY" << endl;
+            return;
+        }
+        Node *temp = top;
+
+        while (temp != NULL)
+        {
+            cout << temp->data;
+            if (temp->next != NULL)
+            {
+                cout << "->";
+            }
+            temp = temp->next;
+        }
+        cout << endl;
+    }
+};
 int main()
 {
 
-    // <-----  IMPLEMENTATION OF STACK USING LINKEDLIST  ----->
+    // <----- LINKED LIST IMPLEMENTATION OF STACK  ----->
 
-    /* TIME COMPLEXITY :- PUSH -> O(1)
-                          POP  -> O(1)
-                          TOP  -> O(1)
-   */
-
-    Push(10);
-    Push(20);
-    Push(30);
-    Push(40);
-
-    printStack();
-
-    Pop();
-    Pop();
-    Pop();
-
-    if (isEmpty())
+    /* 
+       TIME COMPLEXITY :-  POP  :- O(1)
+                           PUSH :- O(1)
+                           TOP  :- O(1)
+    */
+    Stack s;
+    s.Push(10);
+    s.Push(20);
+    s.Push(30);
+    s.printStack();
+    s.Pop();
+    cout << s.Top() << endl;
+    s.Pop();
+    s.Pop();
+    if (s.isEmpty())
     {
         cout << "STACK IS EMPTY" << endl;
     }
-
-    Pop();
-    cout << Top() << endl;
 }
