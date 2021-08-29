@@ -118,7 +118,7 @@ int main()
     // <----- SINGLY LINKEDLIST SEARCHING AND DELETION ----->
 
     // TIME COMPLEXITY OF SEARCHING  :- O(N)
-    // TIME COMPLEXITY OF DELETION   :- O
+    // TIME COMPLEXITY OF DELETION   :- O(N)
 
     display(head);
 
