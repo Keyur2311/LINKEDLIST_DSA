@@ -60,24 +60,23 @@ void display(Node *&head)
 
 Node *removeDuplicate(Node *head)
 {
-    if (head == NULL)
+ // your code goes here
+ if (head == NULL)
         return NULL;
-
-    Node *temp = new Node(head->data);
-    int prev = head->data;
-    head = head->next;
-
-    while (head != NULL)
-    {
-        if (head->data != prev)
-        {
-            insertAtTail(temp, head->data);
-            prev = head->data;
+        
+        Node* curr=head;
+        
+        while(curr->next!=NULL){
+            if(curr->data==curr->next->data){
+                curr->next=curr->next->next;
+            }
+            else{
+                curr=curr->next;
+            }
+            cout<<curr->data<<endl;
         }
-        head = head->next;
-    }
-
-    return temp;
+        
+        return head;
 }
 int main()
 {
@@ -102,4 +101,3 @@ int main()
     Node *temp = removeDuplicate(head);
     display(temp);
 }
-
