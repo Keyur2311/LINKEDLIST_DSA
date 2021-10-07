@@ -21,46 +21,17 @@ void insertAtTail(Node *head, int val)
         head = newNode;
         return;
     }
-
     Node *temp = head;
 
     while (temp->next != NULL)
-    {
         temp = temp->next;
-    }
 
     temp->next = newNode;
-
     return;
-}
-
-void insertAtHead(Node *&head, int val)
-{
-    Node *newNode = new Node(val);
-    newNode->next = head;
-    head = newNode;
-}
-
-int sizeOfLinkedList(Node *&head)
-{
-    if (head == NULL)
-        return 0;
-
-    Node *temp = head;
-
-    int ctr = 0;
-    while (temp != NULL)
-    {
-        ctr++;
-        temp = temp->next;
-    }
-
-    return ctr;
 }
 void display(Node *&head)
 {
     Node *temp = head;
-
     while (temp != NULL)
     {
         cout << temp->data << "";
@@ -73,8 +44,10 @@ void display(Node *&head)
     cout << endl;
 }
 
-int middleInLinkedList(Node *head)
+Node *middleInLinkedList(Node *head)
 {
+    if (head == NULL)
+        return NULL;
 
     Node *fast = head;
     Node *slow = head;
@@ -85,7 +58,7 @@ int middleInLinkedList(Node *head)
         slow = slow->next;
     }
 
-    return slow->data;
+    return slow;
 }
 int main()
 {
@@ -106,7 +79,7 @@ int main()
     */
     // TIME COMPLEXITY :- O(N)
 
-    int middle = middleInLinkedList(head);
-    cout << middle << endl;
+    Node *middle = middleInLinkedList(head);
+    cout << middle->data << endl;
 }
 
